@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aditi Kishore </title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%2315210B'/%3E%3Ccircle cx='20' cy='20' r='13' stroke='%23E4F574' stroke-width='2' fill='none'/%3E%3Cpath d='M16 14 L10 20 L16 26 M24 14 L30 20 L24 26' stroke='%23E4F574' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="meh.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -152,13 +152,53 @@
     0%,100%{box-shadow:0 0 0 0 rgba(228,245,116,0.6);}
     50%{box-shadow:0 0 0 8px rgba(228,245,116,0);}
   }
-  @media (max-width:560px){
-    .btn-resume span{display:none;}
-    .btn-resume{padding:9px 13px;}
+
+  /* ---------- hamburger (mobile only) ---------- */
+  .hamburger-btn{
+    display:none;
+    width:40px;height:40px;border-radius:50%;
+    align-items:center;justify-content:center;
+    border:1px solid var(--ink-line);
+    flex:none;
+    transition:background .2s var(--ease), border-color .2s var(--ease);
   }
+  .hamburger-btn svg{width:18px;height:18px;}
+  .hamburger-btn.is-open{background:var(--lime);color:var(--ink);border-color:var(--lime);}
+
+  .mobile-menu{
+    position:fixed;top:0;right:0;height:100%;width:min(78vw,320px);
+    background:var(--ink-soft);
+    border-left:1px solid var(--ink-line);
+    z-index:150;
+    display:flex;flex-direction:column;
+    padding:90px 30px 30px;
+    gap:6px;
+    transform:translateX(100%);
+    transition:transform .35s var(--ease);
+  }
+  .mobile-menu.is-open{transform:translateX(0);}
+  .mobile-menu a{
+    font-size:20px;font-weight:600;padding:14px 4px;
+    border-bottom:1px solid var(--ink-line);
+    color:var(--cream);
+  }
+  .mobile-menu a:hover{color:var(--lime);}
+  .mobile-menu .btn-resume{
+    justify-content:center;margin-top:26px;padding:14px 18px;font-size:13px;
+  }
+  .menu-backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:140;
+    opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
+  }
+  .menu-backdrop.is-open{opacity:1;pointer-events:auto;}
 
   @media (max-width:860px){
     .topnav__links{display:none;}
+    .topnav .btn-resume{display:none;}
+    .hamburger-btn{display:inline-flex;}
+  }
+  @media (min-width:861px){
+    .mobile-menu, .menu-backdrop, .hamburger-btn{display:none;}
   }
 
   /* ====================== PANEL (hero & contact) ====================== */
@@ -277,6 +317,17 @@
   .wheel__icon img{width:100%;height:100%;object-fit:contain;}
   .wheel__icon.hidden{opacity:0;transform:scale(.7);position:absolute;}
 
+  /* ---------- skills pills (mobile only, shown below the wheel) ---------- */
+  .skills-pills{display:none;width:100%;justify-content:center;margin-top:-40px;}
+  .pills-group{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .pills-group.hidden{display:none;}
+  .skills-pills span{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.5px;
+    color:var(--cream);border:1px solid var(--ink-line);
+    padding:9px 16px;border-radius:999px;background:var(--ink-soft);
+    white-space:nowrap;
+  }
+
   /* ---------- work ---------- */
   .work-list{border-top:1px solid var(--ink-line);}
   .work-item{
@@ -336,19 +387,20 @@
 
   @media (max-width:720px){
     .wheel{width:240px;height:240px;}
-    .wheel__ring text{font-size:9.5px;}
-    .wheel__disc{inset:34px;}
-    .wheel-block{gap:14px;}
+    .wheel__ring{display:none;}
+    .wheel__disc{inset:0;}
+    .wheel-block{gap:14px;row-gap:26px;padding-bottom:50px;}
     .wheel-arrow .icon-btn{width:40px;height:40px;}
+    .skills-pills{display:flex;max-width:300px;margin:0 auto;}
     .about__bio{margin-left:0;margin-top:0;max-width:100%;font-size:15.5px;}
     .about__top{margin-bottom:36px;}
   }
 
   @media (max-width:420px){
     .wheel{width:200px;height:200px;}
-    .wheel__ring text{font-size:8px;}
-    .wheel__disc{inset:28px;}
     .wheel-block{gap:8px;}
+    .skills-pills{max-width:250px;margin:0 auto;}
+    .skills-pills span{font-size:11px;padding:8px 13px;}
   }
 </style>
 </head>
@@ -376,8 +428,28 @@
       </svg>
       <span>Resume</span>
     </a>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">
+      <svg id="hamburgerIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
   </div>
 </nav>
+
+<div class="menu-backdrop" id="menuBackdrop" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#work" onclick="closeMobileMenu()">Work</a>
+  <a href="#shots" onclick="closeMobileMenu()">Shots</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a class="btn-resume" href="Aditi_Kishore_Resume.docx" download="Aditi_Kishore_Resume.docx" onclick="closeMobileMenu()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M12 3v13M5 15l7 7 7-7"/>
+      <line x1="3" y1="22" x2="21" y2="22"/>
+    </svg>
+    <span>Download Resume</span>
+  </a>
+</div>
 
 <!-- ============ HERO ============ -->
 <div class="page-pad">
@@ -472,6 +544,15 @@
         <button class="icon-btn" onclick="toggleWheel('gear')" aria-label="Show gear">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
+      </div>
+    </div>
+
+    <div class="skills-pills" id="skillsPills">
+      <div class="pills-group" id="pillsStack">
+        <span>PYTHON</span><span>JAVASCRIPT</span><span>C / C++</span><span>HTML &amp; CSS</span><span>FLASK</span><span>VS CODE</span><span>DART</span><span>KOTLIN</span>
+      </div>
+      <div class="pills-group hidden" id="pillsGear">
+        <span>CAMERA BODY</span><span>PRIME LENS</span><span>MANUAL FILM CAM</span><span>TRIPOD</span><span>EDITING SUITE</span><span>SNAPSEED</span>
       </div>
     </div>
 
@@ -624,20 +705,59 @@
     const ringtext = document.getElementById('ringtext');
     const iconStack = document.getElementById('iconStack');
     const iconGear = document.getElementById('iconGear');
+    const pillsStack = document.getElementById('pillsStack');
+    const pillsGear = document.getElementById('pillsGear');
     if(mode === 'gear'){
       ringtext.textContent = 'CAMERA BODY \u2022 PRIME LENS \u2022 MANUAL FILM CAM \u2022 TRIPOD \u2022 EDITING SUITE \u2022 SNAPSEED \u2022';
       iconStack.classList.add('hidden');
       iconGear.classList.remove('hidden');
+      pillsStack.classList.add('hidden');
+      pillsGear.classList.remove('hidden');
     } else {
       ringtext.textContent = 'PYTHON \u2022 JAVASCRIPT \u2022 C / C++ \u2022 HTML & CSS \u2022 FLASK \u2022 VS CODE \u2022 DART \u2022 KOTLIN \u2022';
       iconGear.classList.add('hidden');
       iconStack.classList.remove('hidden');
+      pillsGear.classList.add('hidden');
+      pillsStack.classList.remove('hidden');
     }
   }
 
   function scrollShots(dir){
     document.getElementById('shotsTrack').scrollBy({ left: dir * 300, behavior: 'smooth' });
   }
+
+  /* ---------- mobile hamburger menu ---------- */
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBackdrop = document.getElementById('menuBackdrop');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const hamburgerIcon = document.getElementById('hamburgerIcon');
+
+  function toggleMobileMenu(){
+    const isOpen = mobileMenu.classList.contains('is-open');
+    if(isOpen){ closeMobileMenu(); } else { openMobileMenu(); }
+  }
+  function openMobileMenu(){
+    mobileMenu.classList.add('is-open');
+    menuBackdrop.classList.add('is-open');
+    hamburgerBtn.classList.add('is-open');
+    hamburgerBtn.setAttribute('aria-expanded','true');
+    mobileMenu.setAttribute('aria-hidden','false');
+    hamburgerIcon.innerHTML = '<path d="M6 6l12 12M18 6L6 18"/>';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu(){
+    mobileMenu.classList.remove('is-open');
+    menuBackdrop.classList.remove('is-open');
+    hamburgerBtn.classList.remove('is-open');
+    hamburgerBtn.setAttribute('aria-expanded','false');
+    mobileMenu.setAttribute('aria-hidden','true');
+    hamburgerIcon.innerHTML = '<path d="M4 7h16M4 12h16M4 17h16"/>';
+    document.body.style.overflow = '';
+  }
+
+  window.addEventListener('resize', ()=>{
+    if(window.innerWidth > 860){ closeMobileMenu(); }
+  });
 </script>
 
 </body>
