@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- highlight current page in top nav + bottom nav ---------- */
   const path = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.topnav__links a, .bottom-nav__item[data-page]').forEach(link => {
+    link.classList.remove('is-active');
     const href = link.getAttribute('href');
     if (href === path || (path === '' && href === 'index.html')) {
       link.classList.add('is-active');
