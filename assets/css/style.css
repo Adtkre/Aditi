@@ -13,7 +13,7 @@
   --bottom-nav-h:96px;
 }
 
-*{box-sizing:border-box;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
 body{
   margin:0;
@@ -177,7 +177,6 @@ a:focus-visible, button:focus-visible{
   border-radius:18px;
   color:var(--sage);
   -webkit-tap-highlight-color:transparent;
-  tap-highlight-color:transparent;
   outline:none;
   user-select:none;
   transition:color .25s var(--ease);

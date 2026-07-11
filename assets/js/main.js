@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- about page: stack / gear wheel toggle ---------- */
+  let wheelMode = 'stack';
+
   window.toggleWheel = function (mode) {
     const ringtext = document.getElementById('ringtext');
     const iconStack = document.getElementById('iconStack');
@@ -28,7 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const pillsStack = document.getElementById('pillsStack');
     const pillsGear = document.getElementById('pillsGear');
     if (!ringtext) return;
-    if (mode === 'gear') {
+
+    if (typeof mode === 'string') {
+      wheelMode = mode;
+    } else {
+      wheelMode = wheelMode === 'stack' ? 'gear' : 'stack';
+    }
+
+    if (wheelMode === 'gear') {
       ringtext.textContent = 'CAMERA BODY \u2022 PRIME LENS \u2022 MANUAL FILM CAM \u2022 TRIPOD \u2022 EDITING SUITE \u2022 SNAPSEED \u2022';
       iconStack.classList.add('hidden');
       iconGear.classList.remove('hidden');
