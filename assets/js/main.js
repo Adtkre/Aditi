@@ -10,14 +10,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   reveals.forEach(el => io.observe(el));
 
-  /* ---------- highlight current page in top nav + bottom nav ---------- */
+  /* ---------- highlight current page in top nav + bottom nav + mobile menu ---------- */
   const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.topnav__links a, .bottom-nav__item[data-page]').forEach(link => {
+  document.querySelectorAll('.topnav__links a, .bottom-nav__item[data-page], .mobile-menu a[data-page]').forEach(link => {
     link.classList.remove('is-active');
     const href = link.getAttribute('href');
     if (href === path || (path === '' && href === 'index.html')) {
       link.classList.add('is-active');
     }
+  });
+
+  /* ---------- hamburger / mobile side-drawer menu ---------- */
+  const hamburgerBtn = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mobileBackdrop = document.querySelector('.mobile-menu-backdrop');
+  const mobileCloseBtn = document.querySelector('.mobile-menu__close');
+
+  function closeMobileMenu() {
+    if (!mobileMenu || !hamburgerBtn) return;
+    mobileMenu.classList.remove('is-open');
+    hamburgerBtn.classList.remove('is-open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    if (mobileBackdrop) mobileBackdrop.classList.remove('is-open');
+  }
+
+  window.toggleMobileMenu = function () {
+    if (!mobileMenu || !hamburgerBtn) return;
+    const isOpen = mobileMenu.classList.toggle('is-open');
+    hamburgerBtn.classList.toggle('is-open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (mobileBackdrop) mobileBackdrop.classList.toggle('is-open', isOpen);
+  };
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', window.toggleMobileMenu);
+  }
+
+  if (mobileBackdrop) {
+    mobileBackdrop.addEventListener('click', closeMobileMenu);
+  }
+
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu || !hamburgerBtn) return;
+    if (mobileMenu.classList.contains('is-open') &&
+        !mobileMenu.contains(e.target) &&
+        !hamburgerBtn.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 860) closeMobileMenu();
   });
 
   /* ---------- about page: stack / gear wheel toggle ---------- */
