@@ -1,51 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="assets/img/meh.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>Shots</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/img/meh.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dome-gallery.css">
+  <style>
+    #shotsReactRoot {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .shots-desktop-only {
+        display: none;
+      }
+
+      #shotsReactRoot {
+        display: block;
+        height: 80vh;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+        overflow: hidden;
+      }
+    }
+  </style>
+  <title>Shots</title>
 </head>
+
 <body>
 
-<div class="grain" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-<nav class="topnav">
-  <div class="topnav__mark">
-    <img class="topnav__logo" src="assets/img/meh.png" alt="Aditi Kishore logo">
-    <span class="topnav__mark-text">PORTFOLIO</span>
-  </div>
-  <div class="topnav__links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="work.html">Work</a>
-    <a href="experience.html">Experience</a>
-    <a href="shots.html" class="is-active">Shots</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <div class="topnav__socials">
-    <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <a  class="btn-resume"
-  href="./assets/docs/Aditi_Kishore_Resume.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Open Resume">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><path d="M8.5 13h6M8.5 16.5h6"/></svg>
-      <span>Resume</span>
-    </a>
-  </div>
-</nav>
+  <nav class="topnav">
+    <div class="topnav__mark">
+      <img class="topnav__logo" src="assets/img/meh.png" alt="Aditi Kishore logo">
+      <span class="topnav__mark-text">PORTFOLIO</span>
+    </div>
+    <div class="topnav__links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="experience.html">Experience</a>
+      <a href="shots.html" class="is-active">Shots</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="topnav__socials">
+      <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="btn-resume" href="./assets/docs/Aditi_Kishore_Resume.pdf" target="_blank" rel="noopener noreferrer"
+        aria-label="Open Resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
+          <path d="M14 3v4h4" />
+          <path d="M8.5 13h6M8.5 16.5h6" />
+        </svg>
+        <span>Resume</span>
+      </a>
+    </div>
+  </nav>
 
-<div class="mobile-menu-backdrop"></div>
-<div class="mobile-menu">
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu">
     <button class="mobile-menu__close" type="button" aria-label="Close menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
     </button>
     <a href="index.html" data-page="home">Home</a>
     <a href="about.html" data-page="about">About</a>
@@ -54,83 +84,383 @@
     <a href="shots.html" data-page="shots">Shots</a>
     <a href="contact.html" data-page="contact">Contact</a>
     <a href="./assets/docs/Aditi_Kishore_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-</div>
-
-<!-- ============ SHOTS ============ -->
-<section class="section section--first" id="shots">
-  <div class="wrap">
-    <div class="section__head section__head--alt reveal">
-      <h2 class="section__title">shots</h2>
-      <p class="section__desc">
-        Frames pulled from <a href="https://www.instagram.com/havea.capture/" target="_blank" rel="noopener" style="text-decoration:underline;">@havea.capture</a> —
-        streets, light, and the in-between moments.
-      </p>
-    </div>
-
-    <div class="shots-track-wrap reveal">
-      <div class="shots-track" id="shotsTrack">
-        <div class="shot" style="background:url('assets/img/img5.jpeg') center/cover no-repeat;">
-          <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          <span class="shot__label">FRAME_001</span>
-        </div>
-        <div class="shot" style="background:url('assets/img/img2.jpeg') center/cover no-repeat;">
-          <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          <span class="shot__label">FRAME_002</span>
-        </div>
-        <div class="shot" style="background:url('assets/img/img3.jpeg') center/cover no-repeat;">
-          <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          <span class="shot__label">FRAME_003</span>
-        </div>
-        <div class="shot" style="background:url('assets/img/img4.jpeg') center/cover no-repeat;">
-          <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          <span class="shot__label">FRAME_004</span>
-        </div>
-        <div class="shot" style="background:url('assets/img/img1.jpeg') center/cover no-repeat;">
-          <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          <span class="shot__label">FRAME_005</span>
-        </div>
-      </div>
-      <div class="shots-controls">
-        <button class="icon-btn" onclick="scrollShots(-1)" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="icon-btn" onclick="scrollShots(1)" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
   </div>
-</section>
 
-<footer>
-  &copy; <span id="year"></span> Aditi Kishore &mdash; built with HTML, CSS, and a little too much litchi.
-</footer>
-<nav class="bottom-nav" aria-label="Mobile navigation">
-  <a href="index.html" class="bottom-nav__item" data-page="home">
-    <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6.5 10.5V19h11v-8.5"/><path d="M10 19v-4.5h4V19"/></svg></span>
-    <span>Home</span>
-  </a>
-  <a href="about.html" class="bottom-nav__item" data-page="about">
-    <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1-3.6 4.2-6 7.5-6s6.5 2.4 7.5 6"/></svg></span>
-    <span>About</span>
-  </a>
-  <a href="work.html" class="bottom-nav__item" data-page="work">
-    <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg></span>
-    <span>Work</span>
-  </a>
-  <a href="experience.html" class="bottom-nav__item" data-page="experience">
-    <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
-    <span>Exp</span>
-  </a>
-  <a href="contact.html" class="bottom-nav__item" data-page="contact">
-    <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6 8-6"/></svg></span>
-    <span>Contact</span>
-  </a>
-  <a href="./assets/docs/Aditi_Kishore_Resume.pdf"target="_blank" rel="noopener" class="bottom-nav__item bottom-nav__item--resume">
-    <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><path d="M8.5 13h6M8.5 16.5h6"/></svg></span>
-    <span>Resume</span>
-  </a>
-</nav>
-<script src="assets/js/main.js"></script>
+  <!-- ============ SHOTS ============ -->
+  <section class="section section--first" id="shots">
+    <div class="wrap">
+      <div class="section__head section__head--alt reveal">
+        <h2 class="section__title">shots</h2>
+        <p class="section__desc">
+          Frames pulled from <a href="https://www.instagram.com/havea.capture/" target="_blank" rel="noopener"
+            style="text-decoration:underline;">@havea.capture</a> —
+          streets, light, and the in-between moments.
+        </p>
+      </div>
+
+      <div class="shots-track-wrap reveal">
+        <div class="shots-desktop-only">
+          <div class="shots-track" id="shotsTrack">
+            <div class="shot" style="background:url('assets/img/img5.jpeg') center/cover no-repeat;">
+              <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <circle cx="12" cy="13.5" r="3.5" />
+              </svg>
+              <span class="shot__label">FRAME_001</span>
+            </div>
+            <div class="shot" style="background:url('assets/img/img2.jpeg') center/cover no-repeat;">
+              <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <circle cx="12" cy="13.5" r="3.5" />
+              </svg>
+              <span class="shot__label">FRAME_002</span>
+            </div>
+            <div class="shot" style="background:url('assets/img/img3.jpeg') center/cover no-repeat;">
+              <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <circle cx="12" cy="13.5" r="3.5" />
+              </svg>
+              <span class="shot__label">FRAME_003</span>
+            </div>
+            <div class="shot" style="background:url('assets/img/img4.jpeg') center/cover no-repeat;">
+              <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <circle cx="12" cy="13.5" r="3.5" />
+              </svg>
+              <span class="shot__label">FRAME_004</span>
+            </div>
+            <div class="shot" style="background:url('assets/img/img1.jpeg') center/cover no-repeat;">
+              <svg class="shot__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <circle cx="12" cy="13.5" r="3.5" />
+              </svg>
+              <span class="shot__label">FRAME_005</span>
+            </div>
+          </div>
+          <div class="shots-controls">
+            <button class="icon-btn" onclick="scrollShots(-1)" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button class="icon-btn" onclick="scrollShots(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="shotsReactRoot"></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="bottom-nav__item" data-page="home">
+      <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11.5 12 4l8 7.5" />
+          <path d="M6.5 10.5V19h11v-8.5" />
+          <path d="M10 19v-4.5h4V19" />
+        </svg></span>
+      <span>Home</span>
+    </a>
+    <a href="about.html" class="bottom-nav__item" data-page="about">
+      <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="3.5" />
+          <path d="M4.5 20c1-3.6 4.2-6 7.5-6s6.5 2.4 7.5 6" />
+        </svg></span>
+      <span>About</span>
+    </a>
+    <a href="work.html" class="bottom-nav__item" data-page="work">
+      <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="7.5" width="18" height="12" rx="2" />
+          <path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5" />
+          <path d="M3 12.5h18" />
+        </svg></span>
+      <span>Work</span>
+    </a>
+    <a href="experience.html" class="bottom-nav__item" data-page="experience">
+      <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h10" />
+        </svg></span>
+      <span>Exp</span>
+    </a>
+    <a href="contact.html" class="bottom-nav__item" data-page="contact">
+      <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m4 6.5 8 6 8-6" />
+        </svg></span>
+      <span>Contact</span>
+    </a>
+    <a href="./assets/docs/Aditi_Kishore_Resume.pdf" target="_blank" rel="noopener"
+      class="bottom-nav__item bottom-nav__item--resume">
+      <span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
+          <path d="M14 3v4h4" />
+          <path d="M8.5 13h6M8.5 16.5h6" />
+        </svg></span>
+      <span>Resume</span>
+    </a>
+  </nav>
+  <script src="assets/js/main.js"></script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@18.2.0",
+      "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+      "@use-gesture/react": "https://esm.sh/@use-gesture/react@10.3.0?external=react"
+    }
+  }
+</script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" data-type="module">
+    import React, { useEffect, useMemo, useRef, useCallback } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { useGesture } from '@use-gesture/react';
+
+    const DEFAULTS = { maxVerticalRotationDeg: 5, dragSensitivity: 20, enlargeTransitionMs: 300, segments: 25 };
+    const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+    const normalizeAngle = d => ((d % 360) + 360) % 360;
+    const wrapAngleSigned = deg => { const a = (((deg + 180) % 360) + 360) % 360; return a - 180; };
+    const getDataNumber = (el, name, fallback) => { const n = parseFloat(el.dataset[name]); return Number.isFinite(n) ? n : fallback; };
+
+    function buildItems(pool, seg) {
+      const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2);
+      const evenYs = [-4, -2, 0, 2, 4];
+      const oddYs = [-3, -1, 1, 3, 5];
+      const coords = xCols.flatMap((x, c) => {
+        const ys = c % 2 === 0 ? evenYs : oddYs;
+        return ys.map(y => ({ x, y, sizeX: 2, sizeY: 2 }));
+      });
+      if (pool.length === 0) return coords.map(c => ({ ...c, src: '', alt: '' }));
+
+      const normalizedImages = pool.map(i => typeof i === 'string' ? { src: i, alt: '' } : { src: i.src || '', alt: i.alt || '' });
+      const usedImages = Array.from({ length: coords.length }, (_, i) => normalizedImages[i % normalizedImages.length]);
+      for (let i = 1; i < usedImages.length; i++) {
+        if (usedImages[i].src === usedImages[i - 1].src) {
+          for (let j = i + 1; j < usedImages.length; j++) {
+            if (usedImages[j].src !== usedImages[i].src) {
+              const tmp = usedImages[i]; usedImages[i] = usedImages[j]; usedImages[j] = tmp; break;
+            }
+          }
+        }
+      }
+      return coords.map((c, i) => ({ ...c, src: usedImages[i].src, alt: usedImages[i].alt }));
+    }
+
+    function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments) {
+      const unit = 360 / segments / 2;
+      return { rotateX: unit * (offsetY - (sizeY - 1) / 2), rotateY: unit * (offsetX + (sizeX - 1) / 2) };
+    }
+
+    function DomeGallery(props) {
+      const {
+        images = [
+          'assets/img/img5.jpeg',
+          'assets/img/img2.jpeg',
+          'assets/img/img3.jpeg',
+          'assets/img/img4.jpeg',
+          'assets/img/img1.jpeg',
+          'assets/img/img6.jpeg',
+          'assets/img/img7.jpeg',
+          'assets/img/img8.jpeg'
+        ],
+        fit = 0.5, fitBasis = 'auto', minRadius = 600, maxRadius = Infinity, padFactor = 0.25,
+        overlayBlurColor = '#15210B', maxVerticalRotationDeg = DEFAULTS.maxVerticalRotationDeg,
+        dragSensitivity = DEFAULTS.dragSensitivity, enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
+        segments = DEFAULTS.segments, dragDampening = 2, openedImageWidth = '250px',
+        openedImageHeight = '350px', imageBorderRadius = '30px', openedImageBorderRadius = '30px',
+        grayscale = false
+      } = props;
+
+      const rootRef = useRef(null), mainRef = useRef(null), sphereRef = useRef(null);
+      const frameRef = useRef(null), viewerRef = useRef(null), scrimRef = useRef(null);
+      const focusedElRef = useRef(null), originalTilePositionRef = useRef(null);
+
+      const rotationRef = useRef({ x: 0, y: 0 }), startRotRef = useRef({ x: 0, y: 0 });
+      const startPosRef = useRef(null), draggingRef = useRef(false), movedRef = useRef(false);
+      const inertiaRAF = useRef(null), openingRef = useRef(false);
+      const openStartedAtRef = useRef(0), lastDragEndAt = useRef(0);
+      const scrollLockedRef = useRef(false), lockedRadiusRef = useRef(null);
+
+      const lockScroll = useCallback(() => { scrollLockedRef.current = true; }, []);
+      const unlockScroll = useCallback(() => { scrollLockedRef.current = false; }, []);
+
+      const items = useMemo(() => buildItems(images, segments), [images, segments]);
+
+      const applyTransform = useCallback((xDeg, yDeg) => {
+        if (sphereRef.current) sphereRef.current.style.transform = `translateZ(calc(var(--radius) * -1)) rotateX(${xDeg}deg) rotateY(${yDeg}deg)`;
+      }, []);
+
+      useEffect(() => {
+        const root = rootRef.current;
+        if (!root) return;
+        const ro = new ResizeObserver(entries => {
+          const cr = entries[0].contentRect, w = Math.max(1, cr.width), h = Math.max(1, cr.height);
+          const minDim = Math.min(w, h), basis = w;
+          let radius = basis * fit;
+          radius = clamp(Math.min(radius, h * 1.35), minRadius, maxRadius);
+          lockedRadiusRef.current = Math.round(radius);
+
+          root.style.setProperty('--radius', `${lockedRadiusRef.current}px`);
+          root.style.setProperty('--viewer-pad', `${Math.max(8, Math.round(minDim * padFactor))}px`);
+          root.style.setProperty('--overlay-blur-color', overlayBlurColor);
+          root.style.setProperty('--tile-radius', imageBorderRadius);
+          root.style.setProperty('--enlarge-radius', openedImageBorderRadius);
+          root.style.setProperty('--image-filter', grayscale ? 'grayscale(1)' : 'none');
+          applyTransform(rotationRef.current.x, rotationRef.current.y);
+        });
+        ro.observe(root);
+        return () => ro.disconnect();
+      }, [fit, fitBasis, minRadius, maxRadius, padFactor, overlayBlurColor, grayscale, imageBorderRadius, openedImageBorderRadius, applyTransform]);
+
+      const stopInertia = useCallback(() => { if (inertiaRAF.current) cancelAnimationFrame(inertiaRAF.current); inertiaRAF.current = null; }, []);
+      const startInertia = useCallback((vx, vy) => {
+        const MAX_V = 1.4; let vX = clamp(vx, -MAX_V, MAX_V) * 80, vY = clamp(vy, -MAX_V, MAX_V) * 80;
+        let frames = 0; const d = clamp(dragDampening, 0, 1), frictionMul = 0.94 + 0.055 * d, stopThreshold = 0.015 - 0.01 * d;
+        const step = () => {
+          vX *= frictionMul; vY *= frictionMul;
+          if (++frames > Math.round(90 + 270 * d) || (Math.abs(vX) < stopThreshold && Math.abs(vY) < stopThreshold)) { inertiaRAF.current = null; return; }
+          const nx = clamp(rotationRef.current.x - vY / 200, -maxVerticalRotationDeg, maxVerticalRotationDeg);
+          const ny = wrapAngleSigned(rotationRef.current.y + vX / 200);
+          rotationRef.current = { x: nx, y: ny }; applyTransform(nx, ny);
+          inertiaRAF.current = requestAnimationFrame(step);
+        };
+        stopInertia(); inertiaRAF.current = requestAnimationFrame(step);
+      }, [dragDampening, maxVerticalRotationDeg, stopInertia, applyTransform]);
+
+      useGesture({
+        onDragStart: ({ event }) => {
+          if (focusedElRef.current) return;
+          stopInertia(); draggingRef.current = true; movedRef.current = false;
+          startRotRef.current = { ...rotationRef.current }; startPosRef.current = { x: event.clientX, y: event.clientY };
+        },
+        onDrag: ({ event, last, velocity, direction, movement }) => {
+          if (focusedElRef.current || !draggingRef.current || !startPosRef.current) return;
+          const dxTotal = event.clientX - startPosRef.current.x, dyTotal = event.clientY - startPosRef.current.y;
+          if (!movedRef.current && (dxTotal * dxTotal + dyTotal * dyTotal > 16)) movedRef.current = true;
+          const nx = clamp(startRotRef.current.x - dyTotal / dragSensitivity, -maxVerticalRotationDeg, maxVerticalRotationDeg);
+          const ny = wrapAngleSigned(startRotRef.current.y + dxTotal / dragSensitivity);
+          rotationRef.current = { x: nx, y: ny }; applyTransform(nx, ny);
+          if (last) {
+            draggingRef.current = false;
+            let vx = velocity[0] * direction[0], vy = velocity[1] * direction[1];
+            if (Math.abs(vx) < 0.001 && Math.abs(vy) < 0.001 && Array.isArray(movement)) {
+              vx = clamp((movement[0] / dragSensitivity) * 0.02, -1.2, 1.2);
+              vy = clamp((movement[1] / dragSensitivity) * 0.02, -1.2, 1.2);
+            }
+            if (Math.abs(vx) > 0.005 || Math.abs(vy) > 0.005) startInertia(vx, vy);
+            if (movedRef.current) lastDragEndAt.current = performance.now();
+            movedRef.current = false;
+          }
+        }
+      }, { target: mainRef, eventOptions: { passive: true } });
+
+      useEffect(() => {
+        const scrim = scrimRef.current;
+        if (!scrim) return;
+        const close = () => {
+          if (performance.now() - openStartedAtRef.current < 250) return;
+          const el = focusedElRef.current; if (!el) return;
+          const overlay = viewerRef.current?.querySelector('.enlarge'); if (!overlay) return;
+
+          const parent = el.parentElement;
+          const originalPos = originalTilePositionRef.current;
+          if (!originalPos) {
+            overlay.remove(); el.style.visibility = ''; el.style.zIndex = 0;
+            focusedElRef.current = null; rootRef.current?.removeAttribute('data-enlarging'); openingRef.current = false; unlockScroll(); return;
+          }
+
+          const rootRect = rootRef.current.getBoundingClientRect();
+          const animatingOverlay = document.createElement('div');
+          animatingOverlay.className = 'enlarge-closing';
+          animatingOverlay.style.cssText = `position:absolute;left:${overlay.getBoundingClientRect().left - rootRect.left}px;top:${overlay.getBoundingClientRect().top - rootRect.top}px;width:${overlay.getBoundingClientRect().width}px;height:${overlay.getBoundingClientRect().height}px;z-index:9999;border-radius:${openedImageBorderRadius};transition:all ${enlargeTransitionMs}ms ease-out;pointer-events:none;`;
+          if (overlay.querySelector('img')) {
+            const img = overlay.querySelector('img').cloneNode(); img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+            animatingOverlay.appendChild(img);
+          }
+          overlay.remove(); rootRef.current.appendChild(animatingOverlay);
+          void animatingOverlay.getBoundingClientRect();
+          requestAnimationFrame(() => {
+            animatingOverlay.style.left = originalPos.left - rootRect.left + 'px';
+            animatingOverlay.style.top = originalPos.top - rootRect.top + 'px';
+            animatingOverlay.style.width = originalPos.width + 'px';
+            animatingOverlay.style.height = originalPos.height + 'px';
+            animatingOverlay.style.opacity = '0';
+          });
+          animatingOverlay.addEventListener('transitionend', () => {
+            animatingOverlay.remove(); originalTilePositionRef.current = null;
+            el.style.visibility = ''; el.style.opacity = '1'; el.style.zIndex = 0;
+            focusedElRef.current = null; rootRef.current?.removeAttribute('data-enlarging'); openingRef.current = false; unlockScroll();
+          }, { once: true });
+        };
+        scrim.addEventListener('click', close);
+        return () => scrim.removeEventListener('click', close);
+      }, [enlargeTransitionMs, unlockScroll]);
+
+      const onTileClick = e => {
+        if (draggingRef.current || movedRef.current || performance.now() - lastDragEndAt.current < 80 || openingRef.current) return;
+        openingRef.current = true; openStartedAtRef.current = performance.now(); lockScroll();
+        const el = e.currentTarget; focusedElRef.current = el;
+        const tileR = el.getBoundingClientRect(); const mainR = mainRef.current?.getBoundingClientRect(); const frameR = frameRef.current?.getBoundingClientRect();
+        if (!mainR || !frameR) { openingRef.current = false; unlockScroll(); return; }
+
+        originalTilePositionRef.current = { left: tileR.left, top: tileR.top, width: tileR.width, height: tileR.height };
+        el.style.visibility = 'hidden';
+
+        const overlay = document.createElement('div');
+        overlay.className = 'enlarge';
+        overlay.style.cssText = `position:absolute;left:${frameR.left - mainR.left}px;top:${frameR.top - mainR.top}px;width:${frameR.width}px;height:${frameR.height}px;opacity:0;z-index:30;border-radius:${openedImageBorderRadius};transition:transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease;transform-origin:top left;transform:translate(${tileR.left - frameR.left}px, ${tileR.top - frameR.top}px) scale(${tileR.width / frameR.width}, ${tileR.height / frameR.height});`;
+        const img = document.createElement('img'); img.src = el.querySelector('img').src; overlay.appendChild(img);
+        viewerRef.current.appendChild(overlay);
+
+        setTimeout(() => {
+          overlay.style.opacity = '1'; overlay.style.transform = 'translate(0px, 0px) scale(1, 1)';
+          rootRef.current?.setAttribute('data-enlarging', 'true');
+        }, 16);
+      };
+
+      return (
+        <div ref={rootRef} className="sphere-root" style={{ '--segments-x': segments, '--segments-y': segments, '--overlay-blur-color': overlayBlurColor, '--tile-radius': imageBorderRadius, '--enlarge-radius': openedImageBorderRadius, '--image-filter': grayscale ? 'grayscale(1)' : 'none' }}>
+          <main ref={mainRef} className="sphere-main">
+            <div className="stage">
+              <div ref={sphereRef} className="sphere">
+                {items.map((it, i) => (
+                  <div key={`${it.x}-${it.y}-${i}`} className="item" data-offset-x={it.x} data-offset-y={it.y} data-size-x={it.sizeX} data-size-y={it.sizeY} style={{ '--offset-x': it.x, '--offset-y': it.y, '--item-size-x': it.sizeX, '--item-size-y': it.sizeY }}>
+                    <div className="item__image" role="button" onClick={onTileClick} onPointerUp={e => e.pointerType === 'touch' && onTileClick(e)}>
+                      <img src={it.src} draggable={false} alt={it.alt} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="overlay" /><div className="overlay overlay--blur" />
+            <div className="edge-fade edge-fade--top" /><div className="edge-fade edge-fade--bottom" />
+            <div className="viewer" ref={viewerRef}><div ref={scrimRef} className="scrim" /><div ref={frameRef} className="frame" /></div>
+          </main>
+        </div>
+      );
+    }
+
+    // Render DomeGallery on Mobile
+    if (window.innerWidth <= 860) {
+      setTimeout(() => {
+        const rootNode = document.getElementById('shotsReactRoot');
+        if (rootNode) {
+          const root = createRoot(rootNode);
+          root.render(<DomeGallery />);
+        }
+      }, 100);
+    }
+  </script>
 </body>
+
 </html>

@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- hero scrolling marquee pause/play loop ---------- */
+  const ghost = document.querySelector('.hero__ghost');
+  if (ghost) {
+    let isPaused = false;
+    setInterval(() => {
+      isPaused = !isPaused;
+      ghost.style.animationPlayState = isPaused ? 'paused' : 'running';
+    }, 3000);
+  }
+
   /* ---------- reveal on scroll ---------- */
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
@@ -57,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (e) => {
     if (!mobileMenu || !hamburgerBtn) return;
     if (mobileMenu.classList.contains('is-open') &&
-        !mobileMenu.contains(e.target) &&
-        !hamburgerBtn.contains(e.target)) {
+      !mobileMenu.contains(e.target) &&
+      !hamburgerBtn.contains(e.target)) {
       closeMobileMenu();
     }
   });
