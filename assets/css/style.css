@@ -185,27 +185,23 @@ a:focus-visible, button:focus-visible{
 }
 .mobile-menu-backdrop.is-open{display:block;opacity:1;}
 
+/* ---------- mobile menu: film-reel strip ---------- */
 .mobile-menu{
   display:flex;flex-direction:column;
   position:fixed;top:0;right:0;
   width:74%;max-width:280px;
   max-height:calc(100vh - 24px);
   overflow-y:auto;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Crect x='2' y='1' width='8' height='6' rx='2' ry='2' fill='%23FFFFFF'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Crect x='2' y='1' width='8' height='6' rx='2' ry='2' fill='%23FFFFFF'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #223016 0%, var(--ink-soft) 100%);
-  background-repeat:repeat-x, repeat-x, no-repeat;
-  background-position:left 8px top 3px, left 8px bottom 3px, 0 0;
-  background-size:14px 8px, 14px 8px, auto;
-  border:3px solid rgba(255,255,255,0.35);
-  border-radius:16px;
-  padding:76px 34px 24px 38px;
+  background:linear-gradient(180deg, #223016 0%, var(--ink-soft) 100%);
+  border:3px solid rgba(246,251,227,0.4);
+  border-radius:4px;
+  padding:70px 22px 20px;
   transform:translateX(100%);
   transition:transform .35s var(--ease);
   z-index:250;
   box-shadow:
-    -14px 0 34px rgba(0,0,0,0.4),
+    0 10px 18px rgba(0,0,0,0.3),
+    0 22px 44px rgba(0,0,0,0.35),
     0 1px 0 rgba(246,251,227,0.06) inset,
     0 -1px 6px rgba(0,0,0,0.35) inset;
   pointer-events:none;
@@ -214,7 +210,7 @@ a:focus-visible, button:focus-visible{
   transform:translateX(0);
   pointer-events:auto;
 }
-/* sprocket-hole perforations, film-strip style (left & right edges) */
+/* sprocket-hole perforations — identical tile/spacing/color to .bottom-nav, just rotated for the vertical strip */
 .mobile-menu::before,
 .mobile-menu::after{
   content:'';
@@ -224,11 +220,13 @@ a:focus-visible, button:focus-visible{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='14' viewBox='0 0 8 14'%3E%3Crect x='1' y='2' width='6' height='8' rx='2' ry='2' fill='%23FFFFFF'/%3E%3C/svg%3E");
   background-repeat:repeat-y;
   background-size:8px 14px;
+  z-index:1;
+  pointer-events:none;
 }
 .mobile-menu::before{left:3px;}
 .mobile-menu::after{right:3px;}
 .mobile-menu__close{
-  position:absolute;top:22px;right:26px;
+  position:absolute;top:18px;right:22px;
   width:34px;height:34px;
   display:flex;align-items:center;justify-content:center;
   color:var(--cream);
@@ -236,22 +234,33 @@ a:focus-visible, button:focus-visible{
   border-radius:50%;
   background:rgba(246,251,227,0.05);
   transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  z-index:3;
 }
 .mobile-menu__close svg{width:15px;height:15px;}
 .mobile-menu__close:hover{background:var(--lime);color:var(--ink);border-color:var(--lime);}
 .mobile-menu a{
-  padding:15px 12px;
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  padding:20px 14px;
   font-family:'Space Mono',monospace;font-size:14px;font-weight:600;letter-spacing:0.3px;
-  color:var(--cream);opacity:0.85;
-  background:rgba(0,0,0,0.18);
-  border:2px solid rgba(0,0,0,0.55);
-  border-radius:2px;
-  margin-bottom:8px;
-  transition:background .2s var(--ease), opacity .2s var(--ease), border-color .2s var(--ease);
+  color:var(--sage);
+  background:rgba(246,251,227,0.05);
+  border:1px solid rgba(246,251,227,0.08);
+  border-bottom:3px solid rgba(246,251,227,0.4);
+  margin:0;
+  border-radius:0;
+  transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
 }
-.mobile-menu a:last-child{margin-bottom:0;}
-.mobile-menu a:hover{background:rgba(0,0,0,0.32);}
-.mobile-menu a.is-active{opacity:1;color:var(--lime);border-color:var(--lime);background:rgba(228,245,116,0.1);}
+.mobile-menu a:first-child{border-top-left-radius:2px;border-top-right-radius:2px;}
+.mobile-menu a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px;}
+.mobile-menu a:hover{color:var(--cream);}
+.mobile-menu a.is-active{
+  color:var(--ink);
+  background:var(--lime);
+  border-color:var(--lime);
+}
 
 @media (max-width:860px){
   .hamburger{display:flex;}
