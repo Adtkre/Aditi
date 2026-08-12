@@ -755,7 +755,8 @@ button:focus-visible {
   position: absolute;
   top: 40%;
   left: 0;
-  width: 200%;
+  width: 100%;
+  overflow: hidden;
   white-space: nowrap;
   z-index: 1;
   font-family: 'Anton', sans-serif;
@@ -763,7 +764,16 @@ button:focus-visible {
   line-height: 1;
   color: var(--ink);
   opacity: 0.05;
+}
+
+.hero__ghost__track {
+  display: inline-flex;
+  width: max-content;
   animation: drift 30s linear infinite;
+}
+
+.hero__ghost__track span {
+  display: inline-block;
 }
 
 @keyframes drift {
